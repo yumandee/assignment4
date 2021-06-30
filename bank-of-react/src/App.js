@@ -19,10 +19,8 @@ class App extends Component {
         memberSince: ''
       },
       debits: [],
-      // credits: [],
+      credits: []
     }
-
-
   }
 
   
@@ -33,8 +31,8 @@ class App extends Component {
   }
 
   addDebit = (transaction) => {
-    let updatedDebits = [...this.state.debits].push(transaction);
-    this.setState({debits: updatedDebits})
+    this.state.debits.push(transaction);
+    this.setState({debits: this.state.debits})
   }
 
   // addCredit = (amount) => {
@@ -65,7 +63,7 @@ class App extends Component {
       <UserProfile userName = {this.state.currentUser.userName} memberSince = {this.state.currentUser.memberSince} />
     );
     const LogInComponent = () => (<LogIn user = {this.state.currentUser} mockLogIn = {this.mockLogIn} />)
-    const DebitComponent = () => (<Debits debits = {this.state.debits} />)
+    const DebitComponent = () => (<Debits debits = {this.state.debits} addDebit = {this.addDebit} />)
     const searchAPIComponent = () => (<SearchAPI />)
     return (
       <Router>
