@@ -4,9 +4,8 @@ import Home from './components/Home';
 import UserProfile from './components/UserProfile';
 import LogIn from './components/Login';
 import Debits from './components/Debits';
-import SearchAPI from './components/SearchAPI';
+import Credits from './components/Credits';
 import axios from 'axios';
-// import Credits from './components/Credits';
 class App extends Component {
   
   constructor() {
@@ -35,9 +34,10 @@ class App extends Component {
     this.setState({debits: this.state.debits})
   }
 
-  // addCredit = (amount) => {
-
-  // }
+  addCredit = (transaction) => {
+    this.state.credits.push(transaction);
+    this.setState({credits: this.state.credits})
+  }
 
   componentDidMount = async() => {
     let debitsAPI = "https://moj-api.herokuapp.com/debits"
@@ -64,7 +64,8 @@ class App extends Component {
     );
     const LogInComponent = () => (<LogIn user = {this.state.currentUser} mockLogIn = {this.mockLogIn} />)
     const DebitComponent = () => (<Debits debits = {this.state.debits} addDebit = {this.addDebit} />)
-    const searchAPIComponent = () => (<SearchAPI />)
+    const CreditsComponent = () => (<Credits credits = {this.state.credits} addCredit = {this.addCredit} />)
+
     return (
       <Router>
         <div>
@@ -72,8 +73,7 @@ class App extends Component {
           <Route exact path = "/userProfile" render = {UserProfileComponent} />
           <Route exact path = "/login" render = {LogInComponent} />
           <Route exact path = "/debits" render = {DebitComponent} />
-          {/* <Route exact path = "/credits" render = {Credits} /> */}
-          <Route exact path = '/test' render = {searchAPIComponent} />
+          <Route exact path = "/credits" render = {CreditsComponent} />
         </div>
       </Router>
     );
