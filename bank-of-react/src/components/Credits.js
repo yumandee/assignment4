@@ -21,7 +21,6 @@ class Credits extends Component {
       let table = this.props.credits.map( (item, index) =>  {
          if(item.id === '') item.id = index;
          item.amount = parseFloat(item.amount).toFixed(2);
-
          return (
             <tr key = {item.id}>
                <td> {item.description} </td>

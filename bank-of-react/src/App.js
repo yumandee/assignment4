@@ -29,14 +29,26 @@ class App extends Component {
     this.setState({currentUser: newUser})
   }
 
+  updateBalance = () => {
+      let debits = 0; let credits = 0;
+      this.state.debits.forEach(element => { debits += parseFloat(element.amount) });
+      this.state.credits.forEach(element => { credits += parseFloat(element.amount) });
+
+      this.setState({accountBalance: (credits - debits).toFixed(2)});
+  }
+
   addDebit = (transaction) => {
     this.state.debits.push(transaction);
     this.setState({debits: this.state.debits})
+
+    this.updateBalance();
   }
 
   addCredit = (transaction) => {
     this.state.credits.push(transaction);
     this.setState({credits: this.state.credits})
+
+    this.updateBalance();
   }
 
   componentDidMount = async() => {
@@ -54,6 +66,8 @@ class App extends Component {
         console.log(error.response.status);
       }
     }
+
+    this.updateBalance();
   }
 
   render() {
