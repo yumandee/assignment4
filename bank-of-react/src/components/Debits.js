@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import AccountBalance from './AccountBalance';
+import '../css/Transactions.css'
 
 class Debits extends Component {
    constructor() {
@@ -63,41 +65,56 @@ class Debits extends Component {
 
    render() {
       return(
-         <div>
-            <h1> Debits </h1>
-            <table id = "debitsDisplay">  
-               <tbody> 
-                  <tr id = "labels">
-                     <td> Description </td>
-                     <td> Amount </td>
-                     <td> Date </td>
-                  </tr>
-                  {this.showDebits()} 
-               </tbody>
-            </table>
+         <div id = "debits">
+            <div id = "title"> 
+               <h1> Debits </h1>
+            </div>
 
-            <div id = "newDebit"> 
-               <h3> Add Debit </h3> 
+            <ul id = "navbar"> 
+               <li><Link to = "/"> Home </Link></li>
+               <li><Link to = "/userProfile"> User Profile </Link></li>
+               <li><Link class = "active" to = "/debits"> Debits </Link></li>
+               <li><Link to = "/credits"> Credits </Link></li>
+            </ul>
+
+            <div id = "displayTable">
+               <table id = "debitsDisplay">  
+                  <tbody> 
+                     <tr id = "labels">
+                        <th> Description </th>
+                        <th> Amount </th>
+                        <th> Date </th>
+                     </tr>
+                     {this.showDebits()} 
+                  </tbody>
+               </table>  
+            </div>
+
+            <div id = "newTransactionForm"> 
+               <h3> New Debit </h3> 
                <form id = "newDebitForm" onSubmit = {this.newTransaction}>
                   <div>
-                     <label htmlFor = "description"> Description: </label>
+                     <label htmlFor = "description"> Description </label>
                      <input required type = "text" name = "description" onChange = {this.handleChange} />
                   </div>
                   <div>
-                     <label htmlFor = "amount"> Amount: </label>
-                     <input required type = "number" min = "0" name = "amount" step = "any" onChange = {this.handleChange}  />
+                     <label htmlFor = "amount"> Amount </label>
+                     <input required type = "number" min = "0" name = "amount" placeholder = "$0" step = "any" onChange = {this.handleChange}  />
                   </div>
                   <div> 
-                     <label htmlFor = "date"> Date: </label>
+                     <label htmlFor = "date"> Date </label>
                      <input type = "date" name = "date" value = {this.state.newTransaction.date} onChange = {this.handleChange}  />
                   </div>
                   <button type = "submit"> Add Debit </button>
                </form>
             </div>
             
+            <div>
+               <h3> Account Balance </h3>
+               <AccountBalance accountBalance = {this.props.accountBalance} />
+            </div>
 
 
-            <Link to = "/"> Return to Home </Link>
          </div>
       );
    }

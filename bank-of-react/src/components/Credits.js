@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-
+import AccountBalance from './AccountBalance';
+import '../css/Transactions.css'
 class Credits extends Component {
    constructor() {
       super();
@@ -63,21 +64,31 @@ class Credits extends Component {
 
    render() {
       return(
-         <div> 
-            <h1> Credits </h1>
-            <table id = "creditsDisplay">
-               <tbody>
-                  <tr id = "labels">
-                     <td> Description </td>
-                     <td> Amount </td>
-                     <td> Date </td>
-                  </tr>
-                     {this.showCredits()}
-               </tbody>
-            </table>
+         <div id = "credits">  
+            <div id = "title"> <h1> Credits </h1> </div>
 
-            <div id = "newCredit"> 
-               <h3> Add Credit </h3> 
+            <ul id = "navbar"> 
+               <li><Link to = "/"> Home </Link></li>
+               <li><Link to = "/userProfile"> User Profile </Link></li>
+               <li><Link to = "/debits"> Debits </Link></li>
+               <li><Link class = "active" to = "/credits"> Credits </Link></li>
+            </ul>
+
+            <div id = "displayTable">
+               <table id = "creditsDisplay">
+                  <tbody>
+                     <tr id = "labels">
+                        <th> Description </th>
+                        <th> Amount </th>
+                        <th> Date </th>
+                     </tr>
+                        {this.showCredits()}
+                  </tbody>
+               </table>
+            </div>
+
+            <div id = "newTransactionForm"> 
+               <h3> New Credit </h3> 
                <form id = "newCreditForm" onSubmit = {this.newTransaction}>
                   <div>
                      <label htmlFor = "description"> Description: </label>
@@ -85,7 +96,7 @@ class Credits extends Component {
                   </div>
                   <div>
                      <label htmlFor = "amount"> Amount: </label>
-                     <input required type = "number" min = "0" name = "amount" step = "any" onChange = {this.handleChange}  />
+                     <input required type = "number" min = "0" name = "amount" placeholder = "$0" step = "any" onChange = {this.handleChange}  />
                   </div>
                   <div> 
                      <label htmlFor = "date"> Date: </label>
@@ -94,7 +105,13 @@ class Credits extends Component {
                   <button type = "submit"> Add Credit </button>
                </form>
             </div>
-            <Link to =  "/"> Return to Home </Link>
+
+            <div>
+               <h3> Account Balance </h3>
+               <AccountBalance accountBalance = {this.props.accountBalance} />
+            </div>
+
+
          </div>
       );
    }
