@@ -6,12 +6,21 @@ class UserProfile extends Component {
    render() {
       return (
          <div>
-            <h1> User Profile </h1>
+            <div id = "title"> <h1> User Profile </h1></div>
+
+            <ul id = "navbar"> 
+               <li><Link to = "/"> Home </Link></li>
+               <li><Link class = "active"to = "/userProfile"> User Profile </Link></li>
+               <li><Link to = "/debits"> Debits </Link></li>
+               <li><Link to = "/credits"> Credits </Link></li>
+            </ul>
             
-            <div> Username: {this.props.userName} </div>
-            {/* <div> Member Since: {this.props.memberSince} </div> */}
-            <Link to = "/"> Return to Home </Link>
+            <div id = "userProfile"> 
+               <div> <p> Username: </p> {this.props.userName} </div>
+               <div> <p> Member Since: </p> {this.props.memberSince} </div>
+            </div>
             
+
          </div>
 
 
