@@ -10,7 +10,7 @@ class UserProfile extends Component {
 
             <ul id = "navbar"> 
                <li><Link to = "/"> Home </Link></li>
-               <li><Link class = "active"to = "/userProfile"> User Profile </Link></li>
+               <li><Link to = "/userProfile"> User Profile </Link></li>
                <li><Link to = "/debits"> Debits </Link></li>
                <li><Link to = "/credits"> Credits </Link></li>
             </ul>
@@ -20,7 +20,7 @@ class UserProfile extends Component {
                <div> <p> Member Since: </p> {this.props.memberSince} </div>
             </div>
             
-
+            <div id = "login"> Not you? <Link to = "/login"> Login </Link> </div>
          </div>
 
 

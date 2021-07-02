@@ -14,8 +14,8 @@ class App extends Component {
     this.state = {
       accountBalance: 0,
       currentUser: {
-        userName: 'joe_shmo',
-        memberSince: '07/23/96'
+        userName: 'user123',
+        memberSince: '2000-12-07'
       },
       debits: [],
       credits: []

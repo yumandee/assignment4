@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import AccountBalance from './AccountBalance';
-import '../css/Transactions.css'
 class Credits extends Component {
    constructor() {
       super();
@@ -71,7 +70,7 @@ class Credits extends Component {
                <li><Link to = "/"> Home </Link></li>
                <li><Link to = "/userProfile"> User Profile </Link></li>
                <li><Link to = "/debits"> Debits </Link></li>
-               <li><Link class = "active" to = "/credits"> Credits </Link></li>
+               <li><Link to = "/credits"> Credits </Link></li>
             </ul>
 
             <div id = "displayTable">
@@ -91,15 +90,15 @@ class Credits extends Component {
                <h3> New Credit </h3> 
                <form id = "newCreditForm" onSubmit = {this.newTransaction}>
                   <div>
-                     <label htmlFor = "description"> Description: </label>
+                     <label htmlFor = "description"> Description </label>
                      <input required type = "text" name = "description" onChange = {this.handleChange} />
                   </div>
                   <div>
-                     <label htmlFor = "amount"> Amount: </label>
+                     <label htmlFor = "amount"> Amount </label>
                      <input required type = "number" min = "0" name = "amount" placeholder = "$0" step = "any" onChange = {this.handleChange}  />
                   </div>
                   <div> 
-                     <label htmlFor = "date"> Date: </label>
+                     <label htmlFor = "date"> Date </label>
                      <input type = "date" name = "date" value = {this.state.newTransaction.date} onChange = {this.handleChange}  />
                   </div>
                   <button type = "submit"> Add Credit </button>
