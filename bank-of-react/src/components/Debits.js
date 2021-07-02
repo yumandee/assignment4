@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import AccountBalance from './AccountBalance';
-import '../css/Transactions.css'
 
 class Debits extends Component {
    constructor() {
@@ -73,7 +72,7 @@ class Debits extends Component {
             <ul id = "navbar"> 
                <li><Link to = "/"> Home </Link></li>
                <li><Link to = "/userProfile"> User Profile </Link></li>
-               <li><Link class = "active" to = "/debits"> Debits </Link></li>
+               <li><Link to = "/debits"> Debits </Link></li>
                <li><Link to = "/credits"> Credits </Link></li>
             </ul>
 

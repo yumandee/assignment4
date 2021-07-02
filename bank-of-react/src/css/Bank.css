@@ -1,3 +1,7 @@
+div {
+   text-align: center;
+}
+
 #title {
    top: 0;
    background-color: rgb(28, 79, 99);
@@ -139,7 +143,9 @@ li a:hover:not(.active) {
 
 #accBalance,
 #welcome,
-#navbar {
+#navbar,
+#loginForm, 
+#login {
    margin-top: 20px;
 }
 
